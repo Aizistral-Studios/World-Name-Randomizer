@@ -106,8 +106,7 @@ jar {
             "Implementation-Title": "${mod_name}",
             "Implementation-Version": "${mod_version}",
             "Implementation-Vendor" :"${mod_author}",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConnector": "${project.group}.MixinConnector"
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
 }
@@ -158,6 +157,11 @@ curseforge {
         releaseType = "${curse_release}"
         changelogType = 'html'
         changelog = file('docs/changelog.html')
+		
+		addGameVersion '1.16.4'
+		addGameVersion '1.16.3'
+		addGameVersion '1.16.2'
+		addGameVersion '1.16.1'
 		
         //addArtifact(sourcesJar)
         //addArtifact(apiJar)
