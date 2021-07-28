@@ -1,6 +1,6 @@
 # World Name Randomizer
 
-**Current Version:** 1.16.7-v1.2.0
+**Current Version:** 1.17.1-v1.2.0
 
 **Minecraft Version:** 1.17.x
 
