@@ -24,27 +24,27 @@ public class WNREventHandler {
 			CreateWorldScreen screen = (CreateWorldScreen) event.getGui();
 
 			try {
-				String localizedWorld = I18n.format("world.worldnamerandomizer.name");
+				String localizedWorld = I18n.get("world.worldnamerandomizer.name");
 				String number = WorldNameHelper.generateRandomWorldNumber();
 				String name = localizedWorld + number;
 
-				TextFieldWidget nameWidget = screen.worldNameField;
-				TextFieldWidget seedWidget = screen.field_238934_c_.field_239033_g_;
+				TextFieldWidget nameWidget = screen.nameEdit;
+				TextFieldWidget seedWidget = screen.worldGenSettingsComponent.seedEdit;
 
-				if ((nameWidget.getText() == null || !nameWidget.getText().startsWith(localizedWorld)) && (seedWidget == null || seedWidget.getText() == null || seedWidget.getText().isEmpty())) {
-					nameWidget.setText(name);
+				if ((nameWidget.getValue() == null || !nameWidget.getValue().startsWith(localizedWorld)) && (seedWidget == null || seedWidget.getValue() == null || seedWidget.getValue().isEmpty())) {
+					nameWidget.setValue(name);
 
 					if (randomizeSeed.get()) {
 						if (seedWidget == null) {
-							screen.field_238934_c_.func_239048_a_(screen, Minecraft.getInstance(), Minecraft.getInstance().fontRenderer);
-							seedWidget = screen.field_238934_c_.field_239033_g_;
+							screen.worldGenSettingsComponent.init(screen, Minecraft.getInstance(), Minecraft.getInstance().font);
+							seedWidget = screen.worldGenSettingsComponent.seedEdit;
 						}
 
-						seedWidget.setText(number);
+						seedWidget.setValue(number);
 					}
 
-					screen.worldNameField = nameWidget;
-					screen.field_238934_c_.field_239033_g_ = seedWidget;
+					screen.nameEdit = nameWidget;
+					screen.worldGenSettingsComponent.seedEdit = seedWidget;
 				}
 
 			} catch (Exception ex) {
