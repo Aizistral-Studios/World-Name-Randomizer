@@ -5,9 +5,9 @@ import java.util.Random;
 import com.integral.worldnamerandomizer.helpers.WorldNameHelper;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.CreateWorldScreen;
-import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.resources.I18n;
+import net.minecraft.client.gui.components.EditBox;
+import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
+import net.minecraft.client.resources.language.I18n;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.GuiScreenEvent;
@@ -28,8 +28,8 @@ public class WNREventHandler {
 				String number = WorldNameHelper.generateRandomWorldNumber();
 				String name = localizedWorld + number;
 
-				TextFieldWidget nameWidget = screen.nameEdit;
-				TextFieldWidget seedWidget = screen.worldGenSettingsComponent.seedEdit;
+				EditBox nameWidget = screen.nameEdit;
+				EditBox seedWidget = screen.worldGenSettingsComponent.seedEdit;
 
 				if ((nameWidget.getValue() == null || !nameWidget.getValue().startsWith(localizedWorld)) && (seedWidget == null || seedWidget.getValue() == null || seedWidget.getValue().isEmpty())) {
 					nameWidget.setValue(name);
