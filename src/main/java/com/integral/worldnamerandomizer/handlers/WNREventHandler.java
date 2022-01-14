@@ -10,7 +10,7 @@ import net.minecraft.client.gui.screens.worldselection.CreateWorldScreen;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
 import static com.integral.worldnamerandomizer.handlers.ClientConfigHandler.*;
@@ -19,10 +19,10 @@ public class WNREventHandler {
 
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
-	public void onWorldCreation(GuiScreenEvent.InitGuiEvent.Post event) {
-		if (event.getGui() instanceof CreateWorldScreen && randomizerEnabled.get()) {
-			CreateWorldScreen screen = (CreateWorldScreen) event.getGui();
-
+	public void onWorldCreation(ScreenEvent.InitScreenEvent.Post event) {
+		if (event.getScreen() instanceof CreateWorldScreen && randomizerEnabled.get()) {
+			CreateWorldScreen screen = (CreateWorldScreen) event.getScreen();
+			
 			try {
 				String localizedWorld = I18n.get("world.worldnamerandomizer.name");
 				String number = WorldNameHelper.generateRandomWorldNumber();

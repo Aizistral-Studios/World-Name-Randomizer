@@ -14,13 +14,12 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
-
 @Mod(WorldNameRandomizer.MODID)
 public class WorldNameRandomizer {
 	public static final String MODID = "worldnamerandomizer";
 
 	public WorldNameRandomizer() {
-
+		
 		/*
 		 * Subscribing our setup methods to ModEventBus, so that they actually
 		 * do something.
