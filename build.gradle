@@ -157,7 +157,8 @@ curseforge {
         changelogType = 'html'
         changelog = file('docs/changelog.html')
 		
-		addGameVersion '1.17.1'
+		addGameVersion '1.18'
+		addGameVersion '1.18.1'
 		
         //addArtifact(sourcesJar)
         //addArtifact(apiJar)
