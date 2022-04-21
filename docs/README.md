@@ -1,6 +1,6 @@
 # World Name Randomizer
 
-**Current Version:** 1.18.1-v1.3.0
+**Current Version:** 1.18.2-v1.4.0
 
 **Minecraft Version:** 1.18.x
 
