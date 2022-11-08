@@ -1,4 +1,4 @@
-package com.integral.worldnamerandomizer.handlers;
+package com.aizistral.worldnamerandomizer.handlers;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 

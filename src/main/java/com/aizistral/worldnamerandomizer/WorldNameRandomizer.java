@@ -1,9 +1,10 @@
-package com.integral.worldnamerandomizer;
-
-import com.integral.worldnamerandomizer.handlers.ClientConfigHandler;
-import com.integral.worldnamerandomizer.handlers.WNREventHandler;
+package com.aizistral.worldnamerandomizer;
 
 import net.minecraftforge.fml.config.ModConfig;
+
+import com.aizistral.worldnamerandomizer.handlers.ClientConfigHandler;
+import com.aizistral.worldnamerandomizer.handlers.WNREventHandler;
+
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;

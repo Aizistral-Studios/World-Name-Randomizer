@@ -1,8 +1,10 @@
-package com.integral.worldnamerandomizer.handlers;
+package com.aizistral.worldnamerandomizer.handlers;
+
+import static com.aizistral.worldnamerandomizer.handlers.ClientConfigHandler.*;
 
 import java.util.Random;
 
-import com.integral.worldnamerandomizer.helpers.WorldNameHelper;
+import com.aizistral.worldnamerandomizer.helpers.WorldNameHelper;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.EditBox;
@@ -13,13 +15,12 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModList;
-import static com.integral.worldnamerandomizer.handlers.ClientConfigHandler.*;
 
 public class WNREventHandler {
 
 	@SubscribeEvent
 	@OnlyIn(Dist.CLIENT)
-	public void onWorldCreation(ScreenEvent.InitScreenEvent.Post event) {
+	public void onWorldCreation(ScreenEvent.Init.Post event) {
 		if (event.getScreen() instanceof CreateWorldScreen && randomizerEnabled.get()) {
 			CreateWorldScreen screen = (CreateWorldScreen) event.getScreen();
 			

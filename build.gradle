@@ -1,15 +1,30 @@
 buildscript {
     repositories {
         maven { url = 'https://maven.minecraftforge.net' }
-        maven { url = 'https://dist.creeper.host/Sponge/maven' }
         maven { url 'https://plugins.gradle.org/m2/' }
-        jcenter()
+		maven {
+            name "Sponge"
+            url "https://repo.spongepowered.org/repository/maven-public/"
+            content { includeGroup "org.spongepowered" }
+        }
+        maven {
+			name "Gradle Plugin Portal"
+			url 'https://plugins.gradle.org/m2/'
+			content { 
+				includeGroup "gradle.plugin.com.matthewprenger"
+				includeGroup "com.modrinth"
+			}
+		}
         mavenCentral()
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
 		classpath 'gradle.plugin.com.matthewprenger:CurseGradle:1.4.0'
     }
+}
+
+plugins {
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 println("Applying plugins...")
@@ -36,7 +51,7 @@ println(" - OS Archetype: " + System.getProperty('os.arch'))
 
 minecraft {
 	println("Specifying MCP mappings...")
-    mappings channel: 'official', version: '1.18.1'
+    mappings channel: 'official', version: project.version_mcp
 	println("Specifying Access Transformer configuration...")	
 	accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 	
@@ -137,15 +152,15 @@ processResources {
     }
 
     from("${project.projectDir}/docs") {
-		println("Including documentation...")	
-		// Include a license and changelog into build .jar
         include 'changelog.html'
+    }
+
+    from("${project.projectDir}") {
         include 'LICENSE'
     }
 }
 
 curseforge {
-
     project {
 		println("Pushing CurseGradle specifications for project ID: ${curse_id}")	
 	
@@ -157,11 +172,27 @@ curseforge {
         changelogType = 'html'
         changelog = file('docs/changelog.html')
 		
-		addGameVersion '1.18'
-		addGameVersion '1.18.1'
+		addGameVersion '1.19'
+		addGameVersion '1.19.1'
+		addGameVersion '1.19.2'
 		
         //addArtifact(sourcesJar)
         //addArtifact(apiJar)
+    }
+}
+
+modrinth {
+    token = findProperty('modrinthKey') ?: '0'
+    projectId = "T8l1DlsE"
+    versionNumber = project.version
+	versionName = project.mod_name + " Forge-" + project.version
+    versionType = "release"
+	changelog = rootProject.file("docs/changelog.html").text
+    uploadFile = jar
+    gameVersions = ["1.19", "1.19.1", "1.19.2"]
+    dependencies {
+		// The scope can be `required`, `optional`, or `incompatible`
+		//required.project "nU0bVIaL"
     }
 }
 
@@ -179,6 +210,11 @@ tasks.withType(JavaCompile) {
 
 jar.finalizedBy('reobfJar') 
 //publish.dependsOn('reobfJar')
+
+task upload {
+	dependsOn('modrinth')
+	dependsOn('curseforge')
+}
 
 publishing {
 

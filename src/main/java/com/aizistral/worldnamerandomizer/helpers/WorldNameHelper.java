@@ -1,4 +1,4 @@
-package com.integral.worldnamerandomizer.helpers;
+package com.aizistral.worldnamerandomizer.helpers;
 
 import java.util.Random;
 
