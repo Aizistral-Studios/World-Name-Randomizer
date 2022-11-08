@@ -184,8 +184,8 @@ curseforge {
 modrinth {
     token = findProperty('modrinthKey') ?: '0'
     projectId = "T8l1DlsE"
-    versionNumber = project.version
-	versionName = project.mod_name + " Forge-" + project.version
+    versionNumber = 'Forge-' + project.version
+	versionName = project.mod_name + ' Forge-' + project.version
     versionType = "release"
 	changelog = rootProject.file("docs/changelog.html").text
     uploadFile = jar
